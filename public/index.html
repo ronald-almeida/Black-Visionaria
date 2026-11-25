@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050532"><meta name="description" content="Combo Black Visionária Vitalícia. Finalize sua compra com Pix.">
+  <title>Combo Black Visionária Vitalícia</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/checkout.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#checkout">Ir para o pagamento</a>
+  <div class="page">
+    <header class="hero"><img src="/assets/banner.png" width="1440" height="390" alt="Black Visionária. Todos os cursos pelo preço de um. Acesso vitalício." fetchpriority="high"></header>
+    <div class="checkout-layout">
+      <main id="checkout" class="card checkout-card">
+        <div class="checkout-top"><span><span class="mini-lock" aria-hidden="true"></span> CHECKOUT SEGURO</span><span>🇧🇷 <strong>Brasil</strong> · BRL</span></div>
+        <div class="offer-note">TODOS OS CURSOS E COMUNIDADE COM ACESSO VITALÍCIO</div>
+        <section class="product-intro" aria-labelledby="product-name">
+          <img class="product-cover" src="/assets/product.png" alt="Capa do Combo Black Visionária Vitalícia" width="144" height="144">
+          <div><span class="eyebrow">SUA PRÓXIMA CONQUISTA COMEÇA AQUI</span><h1 id="product-name">Combo Black Visionária Vitalícia</h1><p class="price-caption">Por apenas</p><p class="price" data-price>R$ 1.597,00</p><p class="payment-caption">à vista no Pix</p></div>
+        </section>
+        <div id="availability" class="notice" role="status" hidden></div>
+        <form id="buyer-form">
+          <section class="form-section" aria-labelledby="details-heading">
+            <h2 id="details-heading"><span class="section-step">1</span> Seus dados</h2>
+            <p class="section-caption">Preencha com atenção os dados da sua compra.</p>
+            <label for="name">Nome completo</label><input id="name" name="name" placeholder="Digite seu nome completo" autocomplete="name" required minlength="5" maxlength="120">
+            <label for="document">CPF</label><input id="document" name="document" placeholder="000.000.000-00" autocomplete="off" inputmode="numeric" required maxlength="14" aria-describedby="cpf-help"><span id="cpf-help" class="field-help">CPF do titular da compra.</span>
+            <label for="email">E-mail</label><input id="email" name="email" type="email" placeholder="Digite seu e-mail" autocomplete="email" required maxlength="254">
+            <label for="emailConfirmation">Confirme seu e-mail</label><input id="emailConfirmation" name="emailConfirmation" type="email" placeholder="Digite seu e-mail novamente" autocomplete="off" required maxlength="254">
+            <p class="data-note"><span class="mini-lock" aria-hidden="true"></span> Seus dados são usados para processar esta compra.</p>
+          </section>
+          <section class="form-section" aria-labelledby="payment-heading">
+            <h2 id="payment-heading"><span class="section-step">2</span> Forma de pagamento</h2>
+            <div class="pix-option"><img src="/assets/pix.svg" width="32" height="32" alt=""><div><strong>Pix</strong><span>Pagamento à vista</span></div><span class="selected-check" aria-label="Selecionado">✓</span></div>
+            <p class="pix-explanation">Gere seu código e pague pelo aplicativo do seu banco, com QR Code ou Pix copia e cola.</p>
+          </section>
+          <section class="form-section summary" aria-labelledby="summary-heading">
+            <h2 id="summary-heading"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3h2l3 12h10l3-9H6M9 20h.01M18 20h.01"/></svg> Resumo da compra</h2>
+            <div class="summary-product"><img src="/assets/product.png" width="48" height="48" alt=""><span>Combo Black Visionária Vitalícia</span><strong data-price>R$ 1.597,00</strong></div>
+            <div class="summary-line"><span>Forma de pagamento</span><strong>Pix</strong></div>
+            <div class="summary-total"><span>Total</span><div><strong data-price>R$ 1.597,00</strong><span>à vista</span></div></div>
+          </section>
+          <p id="form-error" class="error-message" role="alert" hidden></p>
+          <button id="pay-button" class="button primary" type="submit" disabled><span class="mini-lock" aria-hidden="true"></span> Gerar Pix e finalizar compra</button>
+          <p class="privacy-caption">Seus dados serão tratados para processar o pagamento e atender sua compra. <a href="/privacidade">Política de privacidade</a>.</p>
+        </form>
+        <section id="pix-panel" class="pix-panel" aria-labelledby="pix-heading" hidden>
+          <span class="pill">PAGAMENTO VIA PIX</span><h2 id="pix-heading" tabindex="-1">Falta só pagar o seu Pix</h2>
+          <p>Abra o aplicativo do seu banco e escaneie o QR Code ou use o código abaixo.</p>
+          <strong class="pix-amount" data-price>R$ 1.597,00</strong>
+          <div id="qr-area" class="qr-area" hidden><img id="qr-image" width="224" height="224" alt="QR Code para pagamento do pedido"></div>
+          <div id="code-area" hidden><label for="pix-code">Pix copia e cola</label><textarea id="pix-code" rows="3" readonly spellcheck="false"></textarea><button id="copy-button" class="button primary" type="button">Copiar código Pix</button><span id="copy-feedback" class="copy-feedback" role="status"></span></div>
+          <p id="expiry" class="expiry"></p><p id="payment-status" class="status-message" role="status" aria-live="polite">Aguardando pagamento. A confirmação é automática.</p>
+          <p id="pix-error" class="error-message" role="alert" hidden></p>
+          <button id="check-button" class="button secondary" type="button">Consultar pagamento</button>
+          <button id="retry-button" class="button secondary" type="button" hidden>Recuperar minha cobrança</button>
+          <button id="reset-button" class="text-button" type="button" hidden>Voltar e gerar um novo Pix</button>
+          <p class="field-help">Mantenha esta página aberta para acompanhar a confirmação.</p>
+        </section>
+        <div class="trust-row"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></svg>Conexão<br><strong>protegida</strong></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Privacidade<br><strong>dos seus dados</strong></span><span><img src="/assets/pix.svg" width="28" height="28" alt="">Pagamento<br><strong>via Pix</strong></span></div>
+      </main>
+      <aside class="seller-column">
+        <section class="card seller-card"><span class="seller-label">Oferecido por</span><h2>Viviane Araújo</h2><a class="seller-email" href="mailto:contato@contadoresvisionarios.com.br">contato@contadoresvisionarios.com.br</a><div class="seller-divider"></div><p>Todos os meus cursos e comunidade com acesso vitalício na Black Visionária.</p><p>Você bem informado e atualizado, <strong>pra sempre.</strong></p></section>
+        <section class="benefits"><span class="eyebrow">UM INVESTIMENTO. NOVAS POSSIBILIDADES.</span><h2>Conhecimento que<br>acompanha você.</h2><ul><li><span>✓</span> Todos os cursos em um só combo</li><li><span>✓</span> Comunidade de contadores</li><li><span>✓</span> Acesso vitalício</li></ul><div class="brand-wordmark">BLACK <span>VISIONÁRIA</span></div></section>
+      </aside>
+    </div>
+    <footer class="page-footer"><span>Black Visionária</span><span>Pagamento processado por Nexum Pay</span><a href="/privacidade">Privacidade</a></footer>
+  </div>
+  <noscript><p class="notice">Ative o JavaScript no navegador para concluir o pagamento via Pix.</p></noscript>
+</body>
+</html>
