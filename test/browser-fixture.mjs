@@ -7,8 +7,8 @@ import { createHandler } from '../api/index.js';
 const env = { NEXUM_CHAT_ID: 'local-test', NEXUM_API_CREDENTIAL: 'local-test', CHECKOUT_SESSION_SECRET: 'local-browser-test-secret-never-use-in-production', WHATSAPP_URL: 'https://wa.me/5575988393742' };
 let status = 'PENDING';
 const handle = createHandler({ env, fetcher: async (url, options) => {
-  if (url.endsWith('/pix/create')) return Response.json({ ok: true, tx_id: 'local_test_transaction', amount: 1597, status: 'PENDING', qr_code_text: 'TESTE LOCAL — NÃO É UM PIX VÁLIDO — NÃO PAGAR', expires_in_seconds: 86400 });
-  return Response.json({ ok: true, tx_id: 'local_test_transaction', status, amount: 1597 });
+  if (url.endsWith('/pix/create')) return Response.json({ ok: true, tx_id: 'local_test_transaction', amount: 247, status: 'PENDING', qr_code_text: 'TESTE LOCAL — NÃO É UM PIX VÁLIDO — NÃO PAGAR', expires_in_seconds: 86400 });
+  return Response.json({ ok: true, tx_id: 'local_test_transaction', status, amount: 247 });
 } });
 const root = resolve('public');
 createServer(async (req, res) => {

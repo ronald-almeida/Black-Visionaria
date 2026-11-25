@@ -1,6 +1,6 @@
 # Black Visionária — checkout Pix
 
-Checkout responsivo baseado na oferta [Combo Black Visionária Vitalícia](https://chk.eduzz.com/ji3n4bn7), com pagamento exclusivo via Nexum Pay. Valor: **R$ 1.597,00**, definido no servidor em `lib/checkout.js`.
+Checkout responsivo baseado na oferta [Combo Black Visionária Vitalícia](https://chk.eduzz.com/ji3n4bn7), com pagamento exclusivo via Nexum Pay. Valor: **R$ 247,00**, definido no servidor em `lib/checkout.js`.
 
 ## Páginas
 
@@ -57,7 +57,7 @@ O cookie expira em sete dias; os dados do pagador são removidos da sessão quan
 
 `node test/browser-fixture.mjs` sobe uma simulação **somente local** em `http://127.0.0.1:4174`, sem chamadas reais à Nexum e sem código de Pix pagável. A rota local `/fixture/paid` muda a resposta simulada para paga. Ela não é importada pela aplicação e não é servida na produção.
 
-Antes de liberar vendas, valide a credencial real pelo endpoint `/api/public/auth/validate`, confirme que o limite da conta aceita R$ 1.597,00, confira `NEXUM_ORIGIN` com o provedor e realize uma transação de homologação autorizada. Os testes locais não substituem essa validação.
+Antes de liberar vendas, valide a credencial real pelo endpoint `/api/public/auth/validate`, confirme que o limite da conta aceita R$ 247,00, confira `NEXUM_ORIGIN` com o provedor e realize uma transação de homologação autorizada. Os testes locais não substituem essa validação.
 
 ## Referências e imagens
 

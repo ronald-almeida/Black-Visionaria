@@ -30,7 +30,7 @@ test('encrypted session hides payer data, rejects tampering, expiry and another 
 
 test('only server price is used, credentials stay server-side and retries reuse identical body/key', async () => {
   const calls = [];
-  const handle = createHandler({ env, fetcher: async (url, options) => { calls.push({ url, ...options }); return response({ ok: true, tx_id: 'test_tx', amount: 1597, status: 'PENDING', qr_code_text: 'TEST-NOT-A-PAYABLE-PIX', qr_code_base64: 'aGVsbG8=', expires_in_seconds: 86400 }); } });
+  const handle = createHandler({ env, fetcher: async (url, options) => { calls.push({ url, ...options }); return response({ ok: true, tx_id: 'test_tx', amount: 247, status: 'PENDING', qr_code_text: 'TEST-NOT-A-PAYABLE-PIX', qr_code_base64: 'aGVsbG8=', expires_in_seconds: 86400 }); } });
   const prepared = await handle(request('/api/order', { method: 'POST', body: { ...customer, amount: 0.01 } }));
   assert.equal(prepared.status, 201);
   const cookie = getCookie(prepared);
@@ -44,7 +44,7 @@ test('only server price is used, credentials stay server-side and retries reuse 
   await handle(request('/api/pix', { method: 'POST', cookie: getCookie(first), body: {} }));
   assert.equal(calls[0].body, calls[1].body);
   assert.equal(calls[0].headers['Idempotency-Key'], calls[1].headers['Idempotency-Key']);
-  assert.equal(JSON.parse(calls[0].body).amount, 1597);
+  assert.equal(JSON.parse(calls[0].body).amount, 247);
   assert.equal(calls[0].headers.Origin, env.NEXUM_ORIGIN);
   assert.equal(calls[0].headers['X-API-Credential'], env.NEXUM_API_CREDENTIAL);
 });
@@ -71,7 +71,7 @@ test('timeout can retry the original prepared order and never changes idempotenc
 test('status polling enforces cooldown, confirms expected amount and deduplicates concurrent reads', async () => {
   let calls = 0;
   const order = { ...newOrder(validateCustomer(customer)), txId: randomUUID() };
-  const fetcher = async () => { calls++; return response({ ok: true, tx_id: order.txId, status: 'PAID', amount: 1597 }); };
+  const fetcher = async () => { calls++; return response({ ok: true, tx_id: order.txId, status: 'PAID', amount: 247 }); };
   const copies = [structuredClone(order), structuredClone(order)];
   await Promise.all(copies.map(copy => checkPix(copy, env, fetcher)));
   assert.equal(calls, 1);
@@ -82,7 +82,7 @@ test('status polling enforces cooldown, confirms expected amount and deduplicate
 });
 
 test('confirmation rejects wrong transaction, underpayment, missing amount and unknown statuses', async () => {
-  for (const data of [{ status: 'PAID', amount: 1 }, { status: 'PAID' }, { status: 'PAID', amount: 1597, tx_id: 'unrelated' }]) {
+  for (const data of [{ status: 'PAID', amount: 1 }, { status: 'PAID' }, { status: 'PAID', amount: 247, tx_id: 'unrelated' }]) {
     const order = { ...newOrder(validateCustomer(customer)), txId: randomUUID() };
     await assert.rejects(checkPix(order, env, async () => response({ ok: true, tx_id: order.txId, ...data })));
     assert.equal(order.status, 'PENDING');
@@ -141,5 +141,5 @@ test('an active charge cannot be replaced or reset; expired charge permits a new
 test('Vercel rewrite routes dispatch correctly', async () => {
   const handle = createHandler({ env });
   const result = await handle(request('/api?route=config'));
-  assert.equal((await result.json()).product.amount, 1597);
+  assert.equal((await result.json()).product.amount, 247);
 });
